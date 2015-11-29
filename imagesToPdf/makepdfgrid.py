@@ -8,6 +8,11 @@ import optparse
 import glob
 import sys
 
+# todo:
+# fix sorting order of pictures
+# pull video apart if needed, make it padded for easier sorting
+# c:\bin\ffmpeg -i a.mp4 -ss 00:00:19 -t 10 -vf fps=10 out_%d.png
+
 defpath="c:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"
 
 print defpath
@@ -29,7 +34,7 @@ for files in glob.glob(opts.directory + opts.files):
 
 html = html + "</div>"
 
-# todo , fix sorting order of pictures
+
 
 config = pdfkit.configuration(wkhtmltopdf=opts.defpath)
 pdfkit.from_string(html, opts.outname, configuration=config)
